@@ -1,20 +1,20 @@
-def calcularOperacoes(v, t):
+def calcularOperacoes(v):
     k = 0 # operações
 
     i = 0
-    j = t - 1
+    j = len(v) - 1
 
-    while i != j:
-        if (v[j] < v[i]):
-            p = j
-            while p < len(v) - 2 and v[p] + v[i] > v[p + 1]:
-                p += 1
-
-            v[p] += v[i]
-            i += 1
+    while i <= j:
+        if (v[i] == 1 and v[j] == 0):
             k += 1
-        else:
+            i += 1
             j -= 1
+        else:
+            if (v[i] == 0):
+                i += 1
+
+            if (v[j] == 1):
+                j -= 1
 
     return k
 
@@ -25,6 +25,6 @@ def main():
         t = int(input())
         a = list(map(int, input().split()))
 
-        print(calcularOperacoes(a, t))
+        print(calcularOperacoes(a))
 
 main()
