@@ -2,20 +2,18 @@ def main():
     n = int(input())
 
     s = input()
-    i = 0
-    k = 0
+
+    last = s[-11]
+
+    s = s[:-11]
+
     o = 0
-    while i < len(s):
-        if (s[i] == "8"):
+
+    for c in s:
+        if c == "8":
             o += 1
 
-        if i > n - 11:
-            break
-
-        i += 1
-
-
-    if o >= (n - 12) // 2:
+    if last == "8" and o >= len(s) / 2:
         print("YES")
     else:
         print("NO")
