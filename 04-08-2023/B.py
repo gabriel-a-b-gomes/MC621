@@ -13,18 +13,20 @@ class TreeMaster:
         if x < 0 or y < 0:
             return 0
         
-        ans = self.a[x] * self.a[y]
+        while x >= 0 and y >= 0:
+        
+            ans = self.a[x] * self.a[y]
 
-        calculed = self._reg_in(self.p[x], self.p[y])
+            calculed = self._reg_in(self.p[x], self.p[y])
 
-        if calculed == None:
-            calculed = self.calc(self.p[x], self.p[y])
+            if calculed == None:
+                calculed = self.calc(self.p[x], self.p[y])
 
-            if self.p[x] >= 0 and self.p[y] >= 0:
-                self.r[self.p[x]][self.p[y]] = calculed
-                self.r[self.p[y]][self.p[x]] = calculed
+                if self.p[x] >= 0 and self.p[y] >= 0:
+                    self.r[self.p[x]][self.p[y]] = calculed
+                    self.r[self.p[y]][self.p[x]] = calculed
 
-        ans += calculed
+            ans += calculed
         
         return ans
     
