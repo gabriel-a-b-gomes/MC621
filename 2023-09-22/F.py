@@ -6,17 +6,18 @@ else:
     input_func = input
 
 def main():
-  t = int(input_func())
+  e = input_func()
+  t = int(e)
 
   for _ in range(t):
-    a, b, n, M = map(int, input_func().split())
+    e = input_func()
+    a, b, n, M = map(int, e.split(" "))
 
     i = 0
-    F = 1
-    while i <= n:
-      F = a * F + b
-      i += 1
+    F = (a + b) ** n
 
     print(F % M)
+
+  return 0
 
 main()
