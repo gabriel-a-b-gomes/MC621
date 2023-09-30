@@ -1,27 +1,33 @@
-def solve(k):
-    ans = 1
+def solve(k, ss):
+    if k == 1:
+        return 1
 
-    while k != 1:
-        if k % 2 == 0:
-            k = k // 2
-        else: 
-            k = 3 * k + 1
-        ans += 1
+    if k in ss.keys():
+        return ss[k]
     
-    return ans
+    m = 0
+    if k % 2 == 0:
+        m = k // 2
+    else:
+        m = 3 * k + 1
+
+    ss[k] = 1 + solve(m, ss)
+    
+    return ss[k]
 
 def main():
     ss = {}
     while 1:
         try:
             i, j = map(int, input().split())
+            
+            b, e = i, j
+            if b > e:
+                b, e = j, i
+
             max = 0
-            for k in range(i, j + 1):
-                if k in ss.keys():
-                    s = ss[k]
-                else:
-                    s = solve(k)
-                    ss[k] = s
+            for k in range(b, e + 1):
+                s = solve(k, ss)
                 if s > max: max = s
             print(i, j, max)
         except:
