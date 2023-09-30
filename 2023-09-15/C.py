@@ -3,7 +3,7 @@ import math
 def main():
     N = int(input())
     ans = 0
-    for i in range(int(math.sqrt(N)) + 1, 0, -1):
+    for i in range(N // 2 + 1, 1, -1):
         if N % i == 0: 
             ans = i
             break
