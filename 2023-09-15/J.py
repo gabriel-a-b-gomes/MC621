@@ -21,10 +21,14 @@ def main():
         ans  = 0 # considera o 1
 
         if not primes[n] == 1:
-            for i in range(2, n):
+            i = 2
+            while i < n:
                 if n % i != 0 :
                     if primes[i] == 1:
                         ans += 1
+                else:
+                    n //= i
+                i += 1
             if n > 1:
                 ans += 1
         else:
